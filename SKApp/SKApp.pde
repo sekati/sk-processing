@@ -25,7 +25,7 @@ String VERSION = "v1.0.0";
 
 boolean DEBUG_MODE = true;               // Display debug console in-app
 boolean WEBSOCKET_SERVER = true;         // Enable internal WebSocket Server
-boolean FULLSCREEN = false;               // app fullscreen @see https://processing.org/reference/fullScreen_.html
+boolean FULLSCREEN = false;              // app fullscreen @see https://processing.org/reference/fullScreen_.html
 int DISPLAY = 1;                         // fullscreen hardware display index 
 String RENDERER = P2D;                   // renderer to use: P2D, P3D, JAVA2D (default)
 int STAGE_WIDTH = 800;                   // app width
@@ -62,15 +62,15 @@ void customSetup(){
 void customDraw(){
 
   fill(102);  
-  rect(x, 0, 1, STAGE_HEIGHT); 
-  if (x > STAGE_WIDTH) {
+  rect(x, 0, 1, height); 
+  if (x > width) {
     clear();
     x = 0;
   } else {
     x = x + 2;
   }  
   
-  //console.log("log:" + str(x));
+  console.log("log:" + str(x));
   
 }
 

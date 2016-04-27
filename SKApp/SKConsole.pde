@@ -17,14 +17,14 @@
 public class SKConsole {
 
   int CONSOLE_X = 0;
-  int CONSOLE_Y = height-100;
+  int CONSOLE_Y = height-150;
   int CONSOLE_WIDTH = width;
   int CONSOLE_HEIGHT = height;
-  int CONSOLE_FONTSIZE = 12;
+  int CONSOLE_FONTSIZE = 14;
   int CONSOLE_LINESPACE = 4;
   int CONSOLE_PADDING = 4;
   color CONSOLE_STROKE = color(255,255,255,5);
-  color CONSOLE_BACKGROUND = color(20, 20, 20);
+  color CONSOLE_BACKGROUND = color(20, 20, 20, 150);
   color CONSOLE_FOREGROUND = color(200,0,200);
   boolean isAvailable; // Is logging on by default?
   boolean isVisible;  // Is logging visible in-app by default?
