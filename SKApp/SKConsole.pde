@@ -10,8 +10,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 // DEPENDENCIES
 
-import at.mukprojects.console.*;
-
 
 ////////////////////////////////////////////////////////////////////////////////
 // DEFINITIONS
@@ -90,6 +88,10 @@ public class SKConsole {
   void draw(){  
     // x, y, width, height, preferredTextSize, minTextSize, linespace, padding, strokeColor, backgroundColor, textColor
     if(isVisible) {
+      
+      fill(0, 102, 153, 51);
+      if(DEBUG_MODE) text(NAME+" "+VERSION, 20, 20);    
+      
       console.draw(CONSOLE_X, CONSOLE_Y, CONSOLE_WIDTH, CONSOLE_HEIGHT, CONSOLE_FONTSIZE, CONSOLE_FONTSIZE, CONSOLE_LINESPACE, CONSOLE_PADDING, CONSOLE_STROKE, CONSOLE_BACKGROUND, CONSOLE_FOREGROUND);
       console.print();
     }
