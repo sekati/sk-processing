@@ -20,8 +20,10 @@ String VERSION = "v1.0.0";
 ////////////////////////////////////////////////////////////////////////////////
 // DEFINITIONS
 
-boolean DEBUG_MODE = true;              // Display debug console in-app
-boolean FULLSCREEN = false;              // app fullscreen
+boolean DEBUG_MODE = true;               // Display debug console in-app
+boolean FULLSCREEN = false;               // app fullscreen @see https://processing.org/reference/fullScreen_.html
+int DISPLAY = 1;                         // fullscreen hardware display index 
+String RENDERER = P2D;                   // renderer to use: P2D, P3D, JAVA2D (default)
 int STAGE_WIDTH = 800;                   // app width
 int STAGE_HEIGHT = 600;                  // app height
 int STAGE_X = 0;                         // app x
@@ -45,14 +47,14 @@ int x = 0;
  * Init application
  */
 void customSetup(){
-  println("App Initializing...");
+  console.log("App Initializing...");
 }
 
 /**
  * Init custom rendering
  */
 void customDraw(){
-  debug("APP: Render...");
+
   fill(102);  
   rect(x, 0, 1, STAGE_HEIGHT); 
   if (x > STAGE_WIDTH) {
@@ -79,7 +81,7 @@ void customDraw(){
  */ 
 void settings(){
   size(STAGE_WIDTH, STAGE_HEIGHT);
-  if (FULLSCREEN) fullScreen();
+  if (FULLSCREEN) fullScreen(RENDERER, DISPLAY);
   println("INIT: settings ...");    
 }
 
@@ -94,7 +96,7 @@ void setup() {
   background(STAGE_BACKGROUND);
   frame.setLocation(STAGE_X, STAGE_Y);
   // @see https://processing.org/reference/smooth_.html
-  smooth(8);
+  //smooth();
   noStroke();  
   
   if(DEBUG_MODE) text(NAME+" "+VERSION, 20, 20);  

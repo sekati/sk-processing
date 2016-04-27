@@ -65,6 +65,7 @@ public class SKConsole {
      show();
    } else {
      hide();
+     clear();
    }
  }
   
