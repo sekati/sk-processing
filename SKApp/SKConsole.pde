@@ -5,7 +5,6 @@
  * Copyright (C) 2016 jason m horwitz, Sekati LLC. All Rights Reserved.
  * @desc Wrapper for the visual console.
  * @see https://github.com/keshrath/Console
- * @usage Toggles visible with "~" hotkey.
  */
  
 ////////////////////////////////////////////////////////////////////////////////
@@ -56,7 +55,17 @@ public class SKConsole {
   * Log to console
   */
  void log(String str) {
-   if(isAvailable) println(str);
+   //if(isAvailable) 
+   println(str);
+ }
+ 
+ void toggle(){
+   if(!isVisible) {
+     unmute();
+     show();
+   } else {
+     hide();
+   }
  }
   
   void mute(){

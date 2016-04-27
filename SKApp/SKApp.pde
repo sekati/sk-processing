@@ -20,8 +20,8 @@ String VERSION = "v1.0.0";
 ////////////////////////////////////////////////////////////////////////////////
 // DEFINITIONS
 
-boolean DEBUG_MODE = true;               // Display debug console in-app
-boolean FULLSCREEN = true;               // app fullscreen
+boolean DEBUG_MODE = true;              // Display debug console in-app
+boolean FULLSCREEN = false;              // app fullscreen
 int STAGE_WIDTH = 800;                   // app width
 int STAGE_HEIGHT = 600;                  // app height
 int STAGE_X = 0;                         // app x
@@ -29,12 +29,14 @@ int STAGE_Y = 0;                         // app y
 int STAGE_FRAMERATE = 30;                // app framerate
 int STAGE_BACKGROUND = color(0,0,0);     // app background color
 int SERIAL_BAUD = 9600;                  // Serial Port BAUD rate (9600-19200)
-SKConsole console; 
+SKConsole console;
  
+
 ////////////////////////////////////////////////////////////////////////////////
 // CUSTOM DECLARATIONS 
  
 int x = 0;
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // CUSTOM CODE BEGINS
@@ -42,15 +44,15 @@ int x = 0;
 /**
  * Init application
  */
-void customSetup() {
+void customSetup(){
   println("App Initializing...");
 }
 
 /**
  * Init custom rendering
  */
-void customDraw() {
-  debug("APP: Render");
+void customDraw(){
+  debug("APP: Render...");
   fill(102);  
   rect(x, 0, 1, STAGE_HEIGHT); 
   if (x > STAGE_WIDTH) {
@@ -60,8 +62,9 @@ void customDraw() {
     x = x + 2;
   }  
   
-  console.log("log:" + str(x));
+  //console.log("log:" + str(x));
 }
+
 
 // CUSTOM CODE ENDS
 ////////////////////////////////////////////////////////////////////////////////
@@ -70,12 +73,11 @@ void customDraw() {
 ////////////////////////////////////////////////////////////////////////////////
 // PRIVATE CODE BEGINS
 
-
 /** 
  * Initialize app settings
  * @see https://processing.org/reference/settings_.html
  */ 
-void settings() {
+void settings(){
   size(STAGE_WIDTH, STAGE_HEIGHT);
   if (FULLSCREEN) fullScreen();
   println("INIT: settings ...");    
@@ -92,14 +94,14 @@ void setup() {
   background(STAGE_BACKGROUND);
   frame.setLocation(STAGE_X, STAGE_Y);
   // @see https://processing.org/reference/smooth_.html
-  smooth();
+  smooth(8);
   noStroke();  
   
   if(DEBUG_MODE) text(NAME+" "+VERSION, 20, 20);  
   console = new SKConsole(new Console(this), DEBUG_MODE, DEBUG_MODE);
   
-  console.log(NAME+" "+VERSION+" Initializing ...");
-  console.log("INIT: setup ...");  
+  println(NAME+" "+VERSION+" Initializing ...");
+  println("INIT: setup ...");  
   
   customSetup();
 }
@@ -112,8 +114,18 @@ void draw() {
   console.draw();
 }
 
+/**
+ * Key Management
+ * @see http://processingjs.org/reference/key/
+ */
 void keyPressed() {
   if (key == CODED) {
+    //console.log("KEY: "+keyCode);
+    if(keyCode == SHIFT) {
+      println("HALTING CONSOLE");
+      console.toggle();
+    }
+    /*
     if (keyCode == UP) {
       println("UP");
       console.hide();
@@ -121,9 +133,11 @@ void keyPressed() {
       //fillVal = 0;
       println("down");
       console.show();
-    } 
+    }
+    */
   }
 }
+
 
 // PRIVATE CODE ENDS
 ////////////////////////////////////////////////////////////////////////////////
